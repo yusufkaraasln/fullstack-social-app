@@ -1,0 +1,108 @@
+$primary-color: #242526;
+$secondary-color: #3a3b3c;
+$tertiary-color: #b0b3b8;
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+    height: 0.5rem;
+}
+
+::-webkit-scrollbar-track {}
+
+::-webkit-scrollbar-thumb {
+    background-color: $secondary-color;
+    border-radius: 1rem;
+}
+
+
+.sidebar {
+
+
+
+
+
+
+    flex: 3.2;
+    border-right: 1px solid #242526;
+    overflow-y: scroll;
+
+    &-items {
+        ul {
+            li {
+                padding: 1rem;
+                margin: 1rem;
+                cursor: pointer;
+
+                i {
+                    height: 1rem;
+                    width: 1rem;
+                    margin-right: 2rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                display: flex;
+                align-items: center;
+
+
+                font-size: 1.5rem;
+                color: $tertiary-color;
+
+                &:hover {
+                    background: $primary-color;
+                    border-radius: 1rem;
+                }
+
+                button {
+                    width: 100%;
+                    padding: 1rem;
+                    background: $primary-color;
+                    border-radius: 1rem;
+                    border: none;
+                    cursor: pointer;
+                    font-size: 2rem;
+                    color: #b0b3b8;
+
+                }
+            }
+        }
+
+        border-bottom: 1px solid #242526;
+
+    }
+
+    &-friend-list {
+        &-item {
+            ul {
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    padding: 1rem .5rem;
+                    margin: .5rem 1rem;
+                    cursor: pointer;
+
+                    img {
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 50%;
+                    }
+
+                    span {
+                        color: #b0b3b8;
+                        font-size: 1.5rem;
+                        margin-left: 2rem;
+                    }
+
+                    &:hover {
+                        background: $primary-color;
+                        border-radius: 1rem;
+                    }
+                }
+            }
+
+
+        }
+    }
+}
