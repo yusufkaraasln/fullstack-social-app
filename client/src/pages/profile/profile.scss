@@ -4,153 +4,141 @@ $secondary-color: #3a3b3c;
 $tertiary-color: #b0b3b8;
 
 .profile {
+  height: 100vh;
 
-    height: 100vh;
+  display: flex;
+  background: $background;
 
-    display: flex;
-    background: $background;
+  &-container {
+    flex: 9;
+    overflow-y: scroll;
 
+    &-top {
+      &-wallpaper {
+        position: relative;
 
-
-    &-container {
-
-        flex: 9;
-        overflow-y: scroll;
-
-        &-top {
-
-            &-wallpaper {
-                position: relative;
-
-                img {
-                    height: 400px;
-                }
-
-
-                &-info {
-                    position: absolute;
-                    left: 0;
-                    right: 0;
-                    top: 18rem;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-
-
-                    img {
-                        object-fit: cover;
-                        height: 200px;
-                        width: 200px;
-                        border-radius: 50%;
-                        margin-bottom: .5rem;
-                    }
-
-                    span {
-                        font-size: 2rem;
-                        font-weight: 600;
-                        color: #fff;
-
-                    }
-
-                    p {
-                        font-weight: 400;
-                        color: #b0b3b8;
-                    }
-
-
-
-                }
-
-
-            }
-
-
-
-
+        img {
+          height: 400px;
+          width: 100%;
         }
 
-        &-bottom {
+        &-info {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 18rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
 
-            margin-top: 12rem;
+          img {
+            object-fit: cover;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+          }
 
-            display: flex;
+          span {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #fff;
+          }
 
-
-            &-details {
-                flex: 4;
-                padding: 1rem;
-
-                &-info {
-                    padding: 1rem;
-                    background: #242526;
-                    border-radius: 1rem;
-
-                    span {
-                        font-size: 1.5rem;
-                        color: #fff;
-                    }
-
-                    ul {
-                        li {
-                            margin: 1rem 0;
-
-                            strong {
-                                color: #b0b3b8;
-                            }
-
-                            color: #b0b3b8;
-                            list-style: none;
-
-
-                        }
-                    }
-
-
-                }
-
-                &-friends {
-                    margin-top: 4rem;
-                    padding: 1rem;
-
-                    background: #242526;
-                    border-radius: 1rem;
-
-                    display: flex;
-                    flex-wrap: wrap;
-                    gap: 2rem;
-
-                    &-wrap {
-                        flex-direction: column;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: #b0b3b8;
-
-                        img {
-                            height: 100px;
-                            width: 100px;
-                            border-radius: 1rem;
-                        }
-                    }
-                }
-
-
-            }
-
-
-
-
-
+          p {
+            font-weight: 400;
+            color: #b0b3b8;
+          }
         }
-
-
-
-
+      }
     }
 
+    &-bottom {
+      margin-top: 12rem;
 
+      display: flex;
+      justify-content: space-evenly;
 
+      &-details {
+        width: 40%;
+        padding: 1rem;
 
+        &-info {
+          padding: 1rem;
+          background: #242526;
+          border-radius: 1rem;
 
+          &.follow {
+            margin: 0 auto 4rem auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 400ms background ease-in-out;
+            &:hover {
+              background: #3a3b3c;
+            }
+
+            button {
+              padding: 1rem;
+              cursor: pointer;
+              width: 100%;
+              font-size: 1.5rem;
+              color: #fff;
+              background: transparent;
+              border: none;
+              text-align: center;
+            }
+            width: 50%;
+            background: #242526;
+            color: #fff;
+          }
+
+          span {
+            font-size: 1.5rem;
+            color: #fff;
+          }
+
+          ul {
+            li {
+              margin: 1rem 0;
+
+              strong {
+                color: #b0b3b8;
+              }
+
+              color: #b0b3b8;
+              list-style: none;
+            }
+          }
+        }
+
+        &-friends {
+          margin-top: 4rem;
+          padding: 1rem;
+
+          background: #242526;
+          border-radius: 1rem;
+
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem;
+
+          &-wrap {
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0b3b8;
+
+            img {
+              height: 100px;
+              width: 100px;
+              border-radius: 1rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }

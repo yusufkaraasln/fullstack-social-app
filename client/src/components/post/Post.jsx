@@ -67,7 +67,7 @@ function Post({ post }) {
         <div className="post-top-right">
           <Link to={`/profile/${user.username}`}>
             <img
-              src={user.profilePic ? PF + user.profilePic : PF + "person/noAvatar.png"}
+              src={user.profilePic ? PF + user.profilePic : PF + "noPerson.png"}
               alt=""
             />
 

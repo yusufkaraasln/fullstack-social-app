@@ -28,8 +28,8 @@ function Share() {
     if (file) {
       const data = new FormData()
       const fileName = Date.now() + file.name
-      data.append("file",file)
       data.append("name",fileName)
+      data.append("file",file)
       newPost.img = fileName
         
       try {
@@ -67,7 +67,7 @@ function Share() {
         <div className="share-wrapper-top">
           <img
             src={
-              user.profilePic ? PF + user.profilePic : PF + "person/noAvatar.png"
+              user.profilePic ? PF + user.profilePic : PF + "noPerson.png"
             }
             alt=""
           />

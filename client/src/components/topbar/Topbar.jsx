@@ -38,7 +38,7 @@ function Topbar() {
           <div className="container-right_item">
 
             {
-              <img src={user.profilePic ? PF + user.profilePic : PF + "person/noAvatar.png"} alt="" />
+              <img src={user.profilePic ? PF + user.profilePic : PF + "noPerson.png"} alt="" />
 
 
             }
