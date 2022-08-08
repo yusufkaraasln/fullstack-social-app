@@ -26,8 +26,10 @@ $tertiary-color: #b0b3b8;
       width: 100%;
       border: none;
       background: $secondary-color;
-      padding: 0.5rem;
+      padding: 1rem 0.5rem;
       outline: none;
+      font-size: 1rem;
+      color: #b0b3b8;
       border-radius: 1rem;
       &::placeholder {
         font-size: 1rem;
@@ -50,6 +52,13 @@ $tertiary-color: #b0b3b8;
         margin: 0 1rem;
       }
       color: $tertiary-color;
+
+      i{
+        color: #b0b3b8;
+        font-size: 1.5rem;
+      }
+
+
     }
 
     img {

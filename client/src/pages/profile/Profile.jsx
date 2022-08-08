@@ -10,13 +10,13 @@ import { Link, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-
-
 function Profile() {
+  const { user: currentUser, dispatch } = React.useContext(AuthContext);
   const [user, setUser] = React.useState({});
   const [friends, setFriends] = React.useState([]);
-
-    const { user :currentUser} = React.useContext(AuthContext);
+  const [followed, setFollowed] = React.useState(
+    currentUser.followings.includes(user?.id)
+  );
 
   const username = useParams().username;
 
@@ -41,6 +41,26 @@ function Profile() {
 
     getFriends();
   }, [user._id]);
+
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await axios.put("/users/" + user._id + "/follow", {
+          userId: currentUser._id,
+        });
+
+        dispatch({ type: "FOLLOW", payload: user._id });
+      } else {
+        await axios.put("/users/" + user._id + "/unfollow", {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setFollowed(!followed);
+  };
 
   return (
     <>
@@ -76,12 +96,13 @@ function Profile() {
               <Feed username={username}></Feed>
             </div>
             <div className="profile-container-bottom-details">
-              {
-                username !== currentUser.username && (
-                    <div className="profile-container-bottom-details-info follow">
-                <button>Follow</button>
-              </div>)
-              }
+              {username !== currentUser.username && (
+                <div className="profile-container-bottom-details-info follow">
+                  <button onClick={handleClick}>
+                    {followed ? <span>Unfollow</span> : <span>Follow</span>}
+                  </button>
+                </div>
+              )}
               <div className="profile-container-bottom-details-info">
                 <span>User Information</span>
                 <ul>
@@ -102,31 +123,29 @@ function Profile() {
                   </li>
                 </ul>
               </div>
-              {
-                friends.length > 0 && (
-                    <div className="profile-container-bottom-details-friends">
-                {friends.map((item, i) => (
-                  <Link to={"/profile/" + item.username}>
-                    <div
-                      className="profile-container-bottom-details-friends-wrap"
-                      key={i}
-                    >
-                      <img
-                        src={
-                          item.profilePic
-                            ? PF + item.profilePic
-                            : PF + "noPerson.png"
-                        }
-                        alt=""
-                      />
+              {friends.length > 0 && (
+                <div className="profile-container-bottom-details-friends">
+                  {friends.map((item, i) => (
+                    <Link to={"/profile/" + item.username}>
+                      <div
+                        className="profile-container-bottom-details-friends-wrap"
+                        key={i}
+                      >
+                        <img
+                          src={
+                            item.profilePic
+                              ? PF + item.profilePic
+                              : PF + "noPerson.png"
+                          }
+                          alt=""
+                        />
 
-                      <span>{item.username}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-                )
-              }
+                        <span>{item.username}</span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
