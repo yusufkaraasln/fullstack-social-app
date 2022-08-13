@@ -4,6 +4,8 @@ import Topbar from '../../components/topbar/Topbar'
 import Feed from '../../components/feed/Feed'
 import Rightbar from '../../components/rightbar/Rightbar'
 import "./home.scss"
+import { AuthContext } from '../../context/AuthContext'
+
 
 function Home() {
   return (

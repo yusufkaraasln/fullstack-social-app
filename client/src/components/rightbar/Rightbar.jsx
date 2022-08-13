@@ -1,15 +1,22 @@
 import React from 'react'
+import { AuthContext } from '../../context/AuthContext'
 import "./rightbar.scss"
 function Rightbar() {
+
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
+  const {user} = React.useContext(AuthContext)
+
+
   return (
     <div className='rightbar'>
 
 
       <div className="rightbar-card">
         <div className="rightbar-card-top">
-          <img src="https://picsum.photos/id/237/200/300" alt="" />
+          <img src={user.profilePic ? PF+user.profilePic: PF+"noPerson.png"} alt="" />
 
-          <span>Yusuf Karaaslan</span>
+          <span>{user.username}</span>
 
         </div>
 

@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
+const conversationRoute = require("./routes/conversations");
+const messagesRoute = require("./routes/messages");
 const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
@@ -48,6 +50,9 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
+app.use("/api/conversations", conversationRoute);
+app.use("/api/messages", messagesRoute);
+
 
 app.listen(port, () =>
   console.log("> Server is up and running on port : " + port)

@@ -12,7 +12,7 @@ function Topbar() {
 
     localStorage.clear("user");
     window.location.reload();
-  
+    
 
 
   }
@@ -26,7 +26,7 @@ function Topbar() {
         </Link>
       </div>
       <div className="container-center">
-        <input placeholder="Search for everythink" type="text" />
+        <input placeholder="Search for everything" type="text" />
       </div>
       <div className="container-right">
         <div className="container-right_item">
