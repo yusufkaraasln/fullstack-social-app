@@ -57,7 +57,7 @@ function Share() {
           <input
             type="text"
             placeholder={`What's happend ${
-              user.username[0].toUpperCase() + user.username.substr(1)
+              user?.username
             } ?`}
             ref={desc}
           />

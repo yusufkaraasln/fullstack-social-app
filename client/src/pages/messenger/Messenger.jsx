@@ -21,37 +21,30 @@ function Messenger() {
   const [newMessage, setNewMessage] = React.useState("");
 
   const socket = useRef();
-   
-
-    useEffect(() => {
-      socket.current = io("http://localhost:8900");
-      socket.current.on("getMessage",data=>{
-        setArrivalMessages({
-          sender: data.senderId,
-          text:data.text,
-          createdAt: Date.now()
-        })
-      })
-    },[])
-
-    useEffect(() => {
-
-       arrivalMessages &&
-       currentChat?.members.includes(arrivalMessages.sender) &&
-       setMessages(prev=>[...prev,arrivalMessages])
-    
-
-    }, [arrivalMessages,currentChat])
-
 
   useEffect(() => {
-    socket.current.emit("sendUser",user._id)
-    socket.current.on("getUsers",users=>{
-      console.log(users)
-    })
+    socket.current = io("http://localhost:8900");
+    socket.current.on("getMessage", (data) => {
+      setArrivalMessages({
+        sender: data.senderId,
+        text: data.text,
+        createdAt: Date.now(),
+      });
+    });
+  }, []);
 
-  },[user])
+  useEffect(() => {
+    arrivalMessages &&
+      currentChat?.members.includes(arrivalMessages.sender) &&
+      setMessages((prev) => [...prev, arrivalMessages]);
+  }, [arrivalMessages, currentChat]);
 
+  useEffect(() => {
+    socket.current.emit("sendUser", user._id);
+    socket.current.on("getUsers", (users) => {
+      console.log(users);
+    });
+  }, [user]);
 
   useEffect(() => {
     const getConversation = async () => {
@@ -86,14 +79,15 @@ function Messenger() {
       sender: user._id,
     };
 
-    const receiverId = currentChat.members.find(member=>member !== user._id);
+    const receiverId = currentChat.members.find(
+      (member) => member !== user._id
+    );
 
-    socket.current.emit("sendMessage",{
+    socket.current.emit("sendMessage", {
       senderId: user._id,
       receiverId,
       text: newMessage,
-    })
-
+    });
 
     try {
       const res = await axios.post("/messages", newMessageData);
@@ -103,13 +97,8 @@ function Messenger() {
     }
   };
 
-    
-    
-
-
-
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+    scrollRef?.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   return (
@@ -189,8 +178,8 @@ function Messenger() {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>)
+
 }
 
 export default Messenger;
