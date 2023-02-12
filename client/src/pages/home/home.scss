@@ -1,0 +1,10 @@
+$background: #18191a;
+
+
+
+.home-container{
+    display: flex;
+    width: 100%;
+    background: $background;    
+    height: calc(100vh - 94px);
+}
